@@ -11,7 +11,19 @@ public class MainApp {
     public static void main(String[] args) {
         Random rnd = new Random();
 
-        //туточки делаем массив и вызывам эти методы
+        String[][] matrix = new String[4][4];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = String.valueOf(rnd.nextInt(100));
+                matrix[2][3] = "fd";
+            }
+        }
+
+        try {
+            System.out.println(sumMatrix(matrix));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int sumMatrix(String[][] matrix) {
@@ -19,11 +31,11 @@ public class MainApp {
             throw new NullPointerException();
         }
         if (!ifMatrixSizeCorrect(matrix)) {
-            throw new MyArraySizeException();
+            throw new MyArraySizeException("Wrong matrix dimensions. Should be 4x4");
         }
 
         int sum = 0;
-        int i, j = 0;
+        int i = 0, j = 0;
         try {
             for (i = 0; i < matrix.length; i++) {
                 for (j = 0; j < matrix[i].length; j++) {
@@ -31,7 +43,7 @@ public class MainApp {
                 }
             }
         } catch (NumberFormatException ex) {
-            throw new MyArrayDataException();
+            throw new MyArrayDataException(String.format("Wrong data in [%d][%d]=%s\nShould be number.", i, j, matrix[i][j]));
         }
 
         return sum;
