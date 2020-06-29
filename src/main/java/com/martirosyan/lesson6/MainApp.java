@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class MainApp {
-    private static String[] WORDS = new String[]{"барабан", "бассейн", "берег", "береза", "беседа", "библиотека", "билет", "близко",
+    private final static String[] WORDS = new String[]{"барабан", "бассейн", "берег", "береза", "беседа", "библиотека", "билет", "близко",
             "ботинки", "быстро"};
 
     public static void main(String[] args) {
@@ -33,12 +33,11 @@ public class MainApp {
     }
 
 
-
     private static void testPhoneBook() {
         PhoneBook pb = new PhoneBook();
-        pb.add("Martirosyan","8989283232");
-        pb.add("Martirosyan","8342331133");
-        pb.add("Inozemcev","8949399999");
+        pb.add("Martirosyan", "8989283232");
+        pb.add("Martirosyan", "8342331133");
+        pb.add("Inozemcev", "8949399999");
         System.out.println(pb.get("Martirosyan"));
         System.out.println(pb.get("Inozemcev"));
     }
