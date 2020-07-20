@@ -77,7 +77,7 @@ public class MainApp {
 
 
     // TASK 3
-    private boolean removeRecursively(String directoryPath) {
+    private static boolean removeRecursively(String directoryPath) {
         File dir = new File(directoryPath);
         File[] filelist = dir.listFiles();
         if (filelist != null) {
