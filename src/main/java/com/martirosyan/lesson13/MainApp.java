@@ -5,13 +5,13 @@ import java.util.Arrays;
 
 public class MainApp {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        System.out.println(findCountOfStrings("C:\\Users\\User\\Documents\\Projects\\Tasks\\musor\\1","74"));
     }
 
 
     // TASK 1
-    private int findCountOfStrings(String path, String str) {
+    private static int findCountOfStrings(String path, String str) {
         int count = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -27,11 +27,14 @@ public class MainApp {
                 }
 
                 if (((char) ch) == str.charAt(i)) {
+                    char cha = (char) ch;
                     flag = true;
+                    i = ++i % str.length();
                 } else {
                     flag = false;
+                    i=0;
                 }
-                i = ++i % str.length();
+
 
 
             }
