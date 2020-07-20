@@ -6,7 +6,8 @@ import java.util.Arrays;
 public class MainApp {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(findCountOfStrings("C:\\Users\\User\\Documents\\Projects\\Tasks\\musor\\1","74"));
+        System.out.println(findCountOfStrings("C:\\Users\\User\\Documents\\Projects\\Tasks\\musor\\1", "74"));
+        joinAllFilesInDirectory("C:\\Users\\User\\Documents\\Projects\\Tasks\\musor");
     }
 
 
@@ -32,9 +33,8 @@ public class MainApp {
                     i = ++i % str.length();
                 } else {
                     flag = false;
-                    i=0;
+                    i = 0;
                 }
-
 
 
             }
@@ -48,7 +48,7 @@ public class MainApp {
     }
 
     // TASK 2
-    private void joinAllFilesInDirectory(String directoryPath) {
+    private static void joinAllFilesInDirectory(String directoryPath) {
         File dir = new File(directoryPath);
         File newfile = new File("newfile");
         try {
@@ -59,9 +59,9 @@ public class MainApp {
         Arrays.stream(dir.listFiles()).forEach(f -> fileConsumer(f, newfile));
     }
 
-    private void fileConsumer(File f, File newfile) {
+    private static void fileConsumer(File f, File newfile) {
         try (InputStream in = new BufferedInputStream((new FileInputStream(f)));
-             OutputStream out = new BufferedOutputStream(new FileOutputStream(newfile))) {
+             OutputStream out = new BufferedOutputStream(new FileOutputStream(newfile,true))) {
 
             int ch;
             while ((ch = in.read()) != -1) {
